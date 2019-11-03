@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Etch-a-Sketch
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id='h1'>Etch-a-Sketch</h1>
+        <button id='clearbtn'>Clear Board</button>
+        <div>
+            <div id='grid-container' class='grid-container'>
+
+            </div>
+        </div>
+
+
+        <script>
+            var number_of_divs = 0;
+            var userAnswer = prompt('How many rows and columns would you like?'); 
+            var container = document.getElementById('grid-container');
+            var clearbtn = document.getElementById('clearbtn');
+            function generate_divs() {
+                for (number_of_divs = 0; number_of_divs < userAnswer; number_of_divs++) {
+                    newDiv = document.createElement('div');
+                    newDiv.setAttribute(
+                        'class',
+                        'grid'
+                    );
+                    container.appendChild(newDiv);
+               
+                    newDiv.addEventListener('mouseover', function(e){
+                     e.target.style.backgroundColor = 'red'; 
+                    });
+                    
+                }
+            }
+            generate_divs();
+          
+            clearbtn.addEventListener('click', resetBoard);
+                function resetBoard(){
+                var removeDiv = document.querySelectorAll('.grid');
+                container.removeChild(removeDiv);
+                }
+            
+            
+ 
+        </script>
+    </body>
+</html>
